@@ -1,3 +1,4 @@
+/* app/globals.css */
 @import "tailwindcss";
 
 :root {
@@ -5,11 +6,17 @@
   --foreground: #171717;
 }
 
+/* 🔥 這裡是最關鍵的魔術區 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  
+  /* 🚀 將原本官方的英文字體，直接替換成你的金萱體變數！ */
+  --font-sans: var(--font-jinxuan), sans-serif;
   --font-mono: var(--font-geist-mono);
+  
+  /* 保留獨立呼叫的變數（雖然現在全站預設都是它了） */
+  --font-jinxuan: var(--font-jinxuan), sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +29,18 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+/* 自訂淡入動畫 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+} 
+/* ⚡️ 強制全域最底層畫布為純白色，無視深色模式 */
+html, body {
+  background-color: #ffffff !important;
+  color-scheme: light !important;
 }
