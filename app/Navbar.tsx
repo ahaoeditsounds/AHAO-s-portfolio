@@ -5,7 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-export default function Navbar() {
+// 🌟 新增：定義 Navbar 可以接收的參數開關
+interface NavbarProps {
+  isLarge?: boolean;
+}
+
+// 🌟 修改：接收 isLarge 參數（預設為 false）
+export default function Navbar({ isLarge = false }: NavbarProps) {
   const pathname = usePathname();
   const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -27,12 +33,21 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 💻 電腦版導覽列 */}
+      {/* 💻 電腦版導覽列 (維持你原本的完美設計) */}
       <div className="hidden md:block absolute top-0 left-0 w-full z-50">
         <nav className="max-w-6xl mx-auto pt-8 pb-6 px-12 flex justify-between items-center">
           <Link href="/" className="block">
-            <img src="/logo.png" alt="AHAO XU" className="h-30 w-auto object-contain drop-shadow-md" />
-          </Link>
+  <img 
+    src="/logo.png" 
+    alt="AHAO XU" 
+    // 把原本的 drop-shadow-md 拿掉，避免效果衝突
+    className="h-30 w-auto object-contain" 
+    // 🌟 貼上跟手機版一模一樣的雙層光暈魔法
+    style={{
+      filter: "drop-shadow(0px 0px 2px rgba(255,255,255,0.9)) drop-shadow(0px 0px 30px rgba(255,255,255,0.6))"
+    }}
+  />
+</Link>
           <div className="flex gap-8 text-sm font-semibold drop-shadow-md">
             {links.map((link) => {
               const isActive = pathname === link.path;
@@ -53,10 +68,23 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* 📱 手機版專屬 Logo */}
-      <div className="md:hidden absolute top-8 left-6 z-50">
-        <Link href="/" className="block active:scale-95 transition-transform">
-          <img src="/logo.png" alt="AHAO XU" className="h-16 w-auto object-contain drop-shadow-md" />
+   {/* ========================================
+          📱 手機版專屬 Logo (保留原色 + 雙層白色光暈與邊框)
+      ======================================== */}
+      <div className="md:hidden absolute top-20 left-0 w-full flex justify-center z-50 pointer-events-none">
+        <Link href="/" className="block active:scale-95 transition-transform pointer-events-auto">
+          <img 
+            src="/logo.png" 
+            alt="AHAO XU" 
+            // 把剛剛的 brightness-0 invert 拿掉，恢復原色
+            className={`w-auto object-contain transition-all duration-300 ${
+              isLarge ? "h-24" : "h-22"
+            }`}
+            // 🌟 魔法在這裡：第一層 2px 做出實體白邊，第二層 12px 做出柔和光暈
+            style={{
+              filter: "drop-shadow(0px 0px 8px rgba(255,255,255,0.9)) drop-shadow(0px 0px 15px rgba(255,255,255,0.6))"
+            }}
+          />
         </Link>
       </div>
 
