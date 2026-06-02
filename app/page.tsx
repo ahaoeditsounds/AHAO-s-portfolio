@@ -24,7 +24,7 @@ export default async function HomePage() {
       {/* 🚀 修正 1：將原本的 min-h-[75vh] md:min-h-[85vh] 縮減為 60vh / 65vh，讓背景圖區域變精巧 */}
       <header className="relative w-full min-h-[60vh] md:min-h-[65vh] overflow-hidden flex items-center justify-center bg-slate-900">
         <img 
-          src="/hero-photo.jpg" 
+          src="/hero-photo.JPG" 
           alt="AHAO XU Photography Background" 
           className="absolute inset-0 w-full h-full object-cover z-0"
         />

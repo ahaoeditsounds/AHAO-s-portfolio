@@ -20,7 +20,7 @@ export default async function AudioWorksPage() {
       {/* 🌟 Header 區塊 */}
       <header className="relative w-full h-[35vh] min-h-[280px] overflow-hidden flex bg-slate-900">
         <img 
-          src="/hero-photo.jpg" 
+          src="/hero-photo.JPG" 
           alt="AHAO XU Voice Works Background" 
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
