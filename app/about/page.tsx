@@ -8,7 +8,7 @@ export default function AboutPage() {
       
       <header className="relative w-full h-[35vh] min-h-[280px] overflow-hidden flex bg-slate-900">
         <img 
-          src="/hero-photo.jpg" 
+          src="/hero-photo.JPG" 
           alt="AHAO XU Photography Background" 
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
