@@ -190,13 +190,25 @@ export default function FeaturedSection({ initialWorks }) {
             
             <div className="flex items-center gap-3 bg-white p-2 rounded-xl shadow-sm border border-slate-100 mt-auto">
               <button 
-                onClick={() => togglePlay(work.id, work.audioUrl)}
-                className={`w-8 h-8 rounded-full flex items-center justify-center font-bold transition duration-300 shrink-0 text-xs ${
-                  playingId === work.id ? 'bg-amber-500 text-white scale-95 animate-pulse' : 'bg-slate-900 text-yellow-400 pl-0.5 hover:bg-yellow-400 hover:text-slate-900'
-                }`}
-              >
-                {playingId === work.id ? '❚❚' : '▶'}
-              </button>
+  onClick={() => togglePlay(work.id, work.audioUrl)}
+  className={`w-8 h-8 rounded-full flex items-center justify-center transition duration-300 shrink-0 ${
+    playingId === work.id 
+      ? 'bg-amber-500 text-white scale-95 animate-pulse' 
+      : 'bg-slate-900 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900'
+  }`}
+>
+  {playingId === work.id ? (
+    /* 暫停圖示 (SVG) */
+    <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+    </svg>
+  ) : (
+    /* 播放圖示 (SVG) - 稍微往右推一點讓視覺置中 */
+    <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  )}
+</button>
               <div className="text-[11px] text-slate-500 font-medium truncate font-jinxuan">
                 {playingId === work.id ? '試聽中...' : '點擊試聽'}
               </div>
