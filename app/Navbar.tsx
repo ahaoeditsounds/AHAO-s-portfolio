@@ -33,22 +33,27 @@ export default function Navbar({ isLarge = false }: NavbarProps) {
 
   return (
     <>
-      {/* 💻 電腦版導覽列 (維持你原本的完美設計) */}
-      <div className="hidden md:block absolute top-0 left-0 w-full z-50">
-        <nav className="max-w-6xl mx-auto pt-8 pb-6 px-12 flex justify-between items-center">
-          <Link href="/" className="block">
-  <img 
-    src="/logo.png" 
-    alt="AHAO XU" 
-    // 把原本的 drop-shadow-md 拿掉，避免效果衝突
-    className="h-30 w-auto object-contain" 
-    // 🌟 貼上跟手機版一模一樣的雙層光暈魔法
-    style={{
-      filter: "drop-shadow(0px 0px 2px rgba(255,255,255,0.9)) drop-shadow(0px 0px 30px rgba(255,255,255,0.6))"
-    }}
-  />
-</Link>
-          <div className="flex gap-8 text-sm font-semibold drop-shadow-md">
+      {/* 💻 電腦版導覽列 (🌟 極簡置中風格) */}
+      <div className="hidden md:block absolute top-20 left-0 w-full z-50">
+        {/* 1. 魔法在這裡：將 justify-between 改為 justify-center，並加上 relative */}
+        <nav className="relative max-w-6xl mx-auto pt-8 pb-6 px-12 flex justify-center items-center">
+          
+          {/* 2. 讓 LOGO 變成 absolute 貼在左邊，這樣它就不會影響中央選單的對齊 */}
+          <div className="absolute left-12">
+            <Link href="/" className="block hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/logo.png" 
+                alt="AHAO XU" 
+                className="h-30 w-auto object-contain"
+                style={{
+                  filter: "drop-shadow(0px 0px 2px rgba(255,255,255,0.9)) drop-shadow(0px 0px 12px rgba(255,255,255,0.6))"
+                }}
+              />
+            </Link>
+          </div>
+
+          {/* 3. 選單區塊：因為外層是 justify-center，所以這組按鈕會穩穩地待在畫面的正中央 */}
+          <div className="flex gap-10 text-sm font-semibold drop-shadow-md tracking-widest">
             {links.map((link) => {
               const isActive = pathname === link.path;
               
@@ -65,6 +70,7 @@ export default function Navbar({ isLarge = false }: NavbarProps) {
               );
             })}
           </div>
+
         </nav>
       </div>
 
