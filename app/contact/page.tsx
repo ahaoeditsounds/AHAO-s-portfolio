@@ -8,7 +8,7 @@ export default function ContactPage() {
       {/* 🌌 背景：維持 fixed 確保往下滾動時，底圖能完美填滿畫面 */}
       <div className="fixed inset-0 z-0">
         <img
-          src="/hero-photo.jpg" 
+          src="/hero-photo.JPG" 
           alt="Background"
           className="w-full h-full object-cover blur-md opacity-90 scale-105" 
         />

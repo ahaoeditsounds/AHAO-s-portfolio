@@ -8,7 +8,7 @@ export default function VideoPage() {
       {/* 🌌 背景：拿掉全螢幕漸層黑幕，直接將原圖套用模糊效果 (blur-md) */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-photo.jpg" 
+          src="/hero-photo.JPG" 
           alt="Background"
           className="w-full h-full object-cover blur-md opacity-90 scale-105" 
         />
