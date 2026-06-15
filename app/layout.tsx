@@ -38,8 +38,8 @@ const jinxuan = localFont({
 });
 
 export const metadata = {
-  title: "許庭豪 AHAO XU | 影音製作 ✕ 聲音表演",
-  description: "許庭豪 AHAO XU 的個人接案作品集網站",
+  title: "許庭豪 AHAO XU",
+  description: "許庭豪 AHAO XU 的個人聲音網站",
 };
 
 export default function RootLayout({
