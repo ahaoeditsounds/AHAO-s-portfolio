@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // 🤖 智慧縮圖小幫手
 function AutoThumbnail({ videoUrl, manualThumbnail, alt }) {
@@ -14,7 +15,6 @@ function AutoThumbnail({ videoUrl, manualThumbnail, alt }) {
     }
     if (!videoUrl) return;
 
-    // 🔧 修復：同時支援 watch?v=、youtu.be/、以及 embed/ 三種格式
     if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
       let videoId = '';
       if (videoUrl.includes('watch?v=')) {
@@ -126,8 +126,7 @@ export default function FeaturedSection({ initialWorks }) {
 
   const closeVideo = () => setActiveVideoUrl(null);
 
-  // 🎬 解析 YouTube 或 Vimeo 網址，轉換成可嵌入的格式
-  // 🔧 修復：同時支援 watch?v=、youtu.be/、以及已經是 embed/ 的網址
+  // 🎬 解析 YouTube 或 Vimeo 網址
   const getEmbedInfo = (url) => {
     if (!url) return { url: '', isIframe: false };
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
@@ -160,7 +159,6 @@ export default function FeaturedSection({ initialWorks }) {
         
         {/* ── 頂部媒體呈現區 ── */}
         {isVideoLayout ? (
-          // 🔧 修復：移除 relative，改用獨立 z-index 結構，防止被 header 遮罩蓋住
           <div 
             className="aspect-video w-full bg-slate-200 overflow-hidden cursor-pointer relative z-10"
             onClick={() => openVideo(work.videoUrl || work.url)}
@@ -190,25 +188,23 @@ export default function FeaturedSection({ initialWorks }) {
             
             <div className="flex items-center gap-3 bg-white p-2 rounded-xl shadow-sm border border-slate-100 mt-auto">
               <button 
-  onClick={() => togglePlay(work.id, work.audioUrl)}
-  className={`w-8 h-8 rounded-full flex items-center justify-center transition duration-300 shrink-0 ${
-    playingId === work.id 
-      ? 'bg-amber-500 text-white scale-95 animate-pulse' 
-      : 'bg-slate-900 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900'
-  }`}
->
-  {playingId === work.id ? (
-    /* 暫停圖示 (SVG) */
-    <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-    </svg>
-  ) : (
-    /* 播放圖示 (SVG) - 稍微往右推一點讓視覺置中 */
-    <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  )}
-</button>
+                onClick={() => togglePlay(work.id, work.audioUrl)}
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition duration-300 shrink-0 ${
+                  playingId === work.id 
+                    ? 'bg-amber-500 text-white scale-95 animate-pulse' 
+                    : 'bg-slate-900 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900'
+                }`}
+              >
+                {playingId === work.id ? (
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </button>
               <div className="text-[11px] text-slate-500 font-medium truncate font-jinxuan">
                 {playingId === work.id ? '試聽中...' : '點擊試聽'}
               </div>
@@ -250,8 +246,20 @@ export default function FeaturedSection({ initialWorks }) {
       {/* 🌟 上半部：聲音表演 */}
       {audioWorks.length > 0 && (
         <div className="mb-14">
-          <div className="flex items-center mb-5 border-b border-slate-100 pb-2">
-            <h3 className="text-lg font-bold text-slate-800 font-jinxuan tracking-wide relative pl-3 border-l-4 border-yellow-400">聲音表演</h3>
+          <div className="flex items-end justify-between mb-5 border-b border-slate-100 pb-2">
+            <h3 className="text-lg font-bold text-slate-800 font-jinxuan tracking-wide relative pl-3 border-l-4 border-yellow-400">
+              聲音表演
+            </h3>
+            {/* ✨ 修改：加回黃色小播放鍵、文字改為灰字且移除箭頭 */}
+            <Link 
+              href="/audio" 
+              className="group flex items-center gap-1.5 text-xs md:text-sm font-bold text-slate-500 hover:text-amber-500 transition-colors duration-300 mb-1"
+            >
+              <span className="bg-yellow-400 text-slate-900 rounded-full w-4 h-4 flex items-center justify-center text-[8px] group-hover:scale-110 shadow-sm transition-transform">
+                ▶
+              </span>
+              更多商業配音DEMO
+            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {audioWorks.map(renderWorkCard)}
@@ -263,7 +271,9 @@ export default function FeaturedSection({ initialWorks }) {
       {videoWorks.length > 0 && (
         <div>
           <div className="flex items-center mb-5 border-b border-slate-100 pb-2">
-            <h3 className="text-lg font-bold text-slate-800 font-jinxuan tracking-wide relative pl-3 border-l-4 border-yellow-400">影音製作</h3>
+            <h3 className="text-lg font-bold text-slate-800 font-jinxuan tracking-wide relative pl-3 border-l-4 border-yellow-400">
+              影音製作
+            </h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {videoWorks.map(renderWorkCard)}

@@ -119,6 +119,7 @@ export default function AboutPage() {
             <div className="mt-10 bg-amber-50/60 border border-amber-100/80 rounded-xl p-5 space-y-3.5">
               <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0"></span><p className="font-bold text-slate-800 text-[14.5px] tracking-wide">天籟國際文創配音班 15 期</p></div>
               <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0"></span><p className="font-bold text-slate-800 text-[14.5px] tracking-wide">聲柒柒廣告配音班 28 期</p></div>
+              <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400 shrink-0"></span><p className="font-bold text-slate-800 text-[14.5px] tracking-wide">國立彰化師範大學 有聲教材/書籍配音員</p></div>
             </div>
 
             <hr className="border-slate-100 my-10" />
