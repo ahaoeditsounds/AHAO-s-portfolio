@@ -31,10 +31,10 @@ export default function VideoPage() {
           
           {/* 文字整體縮小，並加上陰影確保閱讀清晰 */}
           <h1 className="text-xl md:text-2xl font-bold text-white mb-2 tracking-wider drop-shadow-lg">
-            影音頁面尚在製作中
+            目前無承接影音製作。
           </h1>
           <p className="text-yellow-400 text-base md:text-lg font-medium tracking-wide mb-8 drop-shadow-md">
-            寫網頁太累QQ
+            頁面未完成，寫網頁太累QQ
           </p>
           
           {/* YT 播放清單連結 */}
@@ -44,7 +44,7 @@ export default function VideoPage() {
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 text-sm md:text-base bg-yellow-400 text-slate-900 font-bold rounded-full hover:bg-yellow-300 transition-all shadow-[0_0_15px_rgba(250,204,21,0.5)] hover:shadow-[0_0_25px_rgba(250,204,21,0.8)] active:scale-95"
           >
-            先去YouTube看看作品吧！
+            不過可到YouTube看看作品！
           </a>
 
         </div>

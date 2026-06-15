@@ -111,7 +111,7 @@ export default function AboutPage() {
             <div className="space-y-5 text-[15.5px] md:text-base text-justify">
               <p>
                 曾以影音維生。因為喜歡聲音，轉換跑道進修配音。<br className="hidden md:inline" />
-                <strong>現主要承接「廣告配音」業務</strong>，不過若有影音需求亦可聯繫。
+                <strong>現主要承接「廣告配音」業務</strong>，暫不承接影音製作案。
               </p>
               <p>興趣攝影，以零碎的片段編織成具有張力的故事。</p>
             </div>
