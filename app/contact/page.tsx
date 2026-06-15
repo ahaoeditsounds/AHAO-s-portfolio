@@ -37,7 +37,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-white/90 text-[15px] md:text-lg leading-relaxed font-light tracking-wide drop-shadow-md max-w-xl">
               謝謝您的瀏覽。<br/>
-              有配音錄製需求，都常歡迎與我聯繫。
+              有旁白配音需求，歡迎與我聯繫。
             </p>
           </div>
 
